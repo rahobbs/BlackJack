@@ -2,10 +2,13 @@ public class Score {
 
     static String winner = "";
 
-    public static boolean isGameOver(int playerOneTotal, int dealerTotal) {
+    public static boolean isGameOver(int playerOneTotal, int dealerTotal, String action, String dealerAction) {
         if (playerOneTotal >= 21 || dealerTotal >= 21) {
             return true;
-        } else {
+        } else if (action.equals("stay") && dealerAction.equals("stay")) {
+            return true;
+        }
+        else {
             return false;
         }
 

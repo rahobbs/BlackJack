@@ -5,6 +5,8 @@ public class BlackJackMain {
     public static void main(String[] args) {
 
         Scanner keyboard = new Scanner(System.in);
+        String action = "";
+        String dealerAction = "";
 
         System.out.println("Welcome to Blackjack!");
         System.out.println("");
@@ -24,14 +26,21 @@ public class BlackJackMain {
         System.out.println("The dealer got a " + dealerCardOne.value
                 + ". His second card and total are hidden.");
 
-        while (Score.isGameOver(playerOneTotal, dealerTotal) == false) {
+        while (Score.isGameOver(playerOneTotal, dealerTotal, action, dealerAction) == false) {
             Card playerCard = new Card();
             Card dealerCard = new Card();
-            playerOneTotal = playerOneTotal + playerCard.value;
-            System.out.println("You get a " + playerCard.value
-                    + ". Your total is " + playerOneTotal + ".");
+           
             
-            if (Score.isGameOver(playerOneTotal, dealerTotal) ==true){
+            System.out.println("Would you like to \"hit\" or \"stay?\"");
+            action = keyboard.next();
+            
+            if (action.equals("hit")){
+                playerOneTotal = playerOneTotal + playerCard.value;
+                System.out.println("You get a " + playerCard.value
+                        + ". Your total is " + playerOneTotal + ".");
+            }
+            
+            if (Score.isGameOver(playerOneTotal, dealerTotal, action, dealerAction) ==true){
                 break;
             }
             
@@ -40,11 +49,9 @@ public class BlackJackMain {
             System.out.println("The dealer got a " + dealerCard.value + ".");
             } else{
                 System.out.println("The dealer has chosen to stay.");
+                dealerAction = "stay";
             }
 
-                        
-            System.out.println("Would you like to \"hit\" or \"stay?\"");
-            String action = keyboard.next();
         }
 
         System.out.println("Game over. "
