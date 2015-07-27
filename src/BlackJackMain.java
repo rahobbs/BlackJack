@@ -26,36 +26,39 @@ public class BlackJackMain {
         System.out.println("The dealer got a " + dealerCardOne.value
                 + ". His second card and total are hidden.");
 
-        while (Score.isGameOver(playerOneTotal, dealerTotal, action, dealerAction) == false) {
-            Card playerCard = new Card();
+        // gameplay - continue until there is a winner or both players choose to
+        // stay
+        while (Score.isGameOver(playerOneTotal, dealerTotal, action,
+                dealerAction) == false) {
+            int playerCard = new Card();
             Card dealerCard = new Card();
-           
-            
+
             System.out.println("Would you like to \"hit\" or \"stay?\"");
             action = keyboard.next();
-            
-            if (action.equals("hit")){
+
+            if (action.equals("hit")) {
                 playerOneTotal = playerOneTotal + playerCard.value;
                 System.out.println("You get a " + playerCard.value
                         + ". Your total is " + playerOneTotal + ".");
             }
-            
-            if (Score.isGameOver(playerOneTotal, dealerTotal, action, dealerAction) ==true){
+
+            if (Score.isGameOver(playerOneTotal, dealerTotal, action,
+                    dealerAction) == true) {
                 break;
             }
-            
-            if (dealerTotal < 16){
-            dealerTotal = dealerTotal + dealerCard.value;
-            System.out.println("The dealer got a " + dealerCard.value + ".");
-            } else{
+
+            if (dealerTotal < 16) {
+                dealerTotal = dealerTotal + dealerCard.value;
+                System.out
+                        .println("The dealer got a " + dealerCard.value + ".");
+            } else {
                 System.out.println("The dealer has chosen to stay.");
                 dealerAction = "stay";
             }
-
         }
 
-        System.out.println("Game over. "
-                + Score.pickWinner(playerOneTotal, dealerTotal)
-                + " is the winner.");
+        // declare winner when game is over
+        System.out.println("Game over. The winner is "
+                + Score.pickWinner(playerOneTotal, dealerTotal));
     }
 }
