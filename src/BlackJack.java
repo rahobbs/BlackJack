@@ -33,7 +33,7 @@ public class BlackJack {
                 + ". His second card and total are hidden.");
 
         while (Score.isGameOver(playerOne.playerTotal, dealer.playerTotal,
-                playerOne.makeChoice(), dealer.makeChoice()) == false) {
+                playerOne.makeChoice().toString(), dealer.makeChoice().toString()) == false) {
 
             playerOne.applyChoice(playerOne.makeChoice());
             Score.isGameOver(playerOne.playerTotal, dealer.playerTotal, action,
