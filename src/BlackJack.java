@@ -45,6 +45,7 @@ public class BlackJack {
         // declare winner when game is over
         System.out.println("Game over. The winner is "
                 + Score.pickWinner(playerOne.playerTotal, dealer.playerTotal));
+        keyboard.close();
 
     }
 
