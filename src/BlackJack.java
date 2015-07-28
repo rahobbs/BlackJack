@@ -16,7 +16,7 @@ public class BlackJack {
         // initial draw, create playerOne, dealer, initial cards and total
 
         Player playerOne = new Player();
-        Player dealer = new Player();
+        Dealer dealer = new Dealer();
         int playerCardOne = rand.nextInt(11 - 2 + 1) + 2;
         int playerCardTwo = rand.nextInt(11 - 2 + 1) + 2;
         playerOne.playerTotal = playerCardOne + playerCardTwo;
@@ -33,13 +33,13 @@ public class BlackJack {
 
         // gameplay
         while (Score.isGameOver(playerOne.playerTotal, dealer.playerTotal,
-                playerOne.makeChoice().toString(), dealer.makeChoice()
-                        .toString()) == false) {
+                playerOne.userInput, dealer.userInput) == false) {
 
             playerOne.applyChoice(playerOne.makeChoice());
             Score.isGameOver(playerOne.playerTotal, dealer.playerTotal, action,
                     dealerAction);
             dealer.applyChoice(dealer.makeChoice());
+            System.out.println("The dealer chose to " + dealer.userInput);
 
         }
 

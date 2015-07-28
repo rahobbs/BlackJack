@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Player {
     int playerTotal;
+    String userInput = "";
 
     public enum Choice {
         HIT, STAY, NONE
@@ -13,7 +14,7 @@ public class Player {
         Choice userChoice;
 
         System.out.print("Would you like to \"hit\" or \"stay?\": ");
-        String userInput = keyboard.next().trim().toUpperCase();
+        userInput = keyboard.next().trim().toUpperCase();
         // TODO (rachael) Remove this print statement once gameplay bug resolved
         System.out.println("\"" + userInput + "\"");
         switch (userInput) {
@@ -28,7 +29,6 @@ public class Player {
             userChoice = Choice.NONE;
             break;
         }
-        keyboard.close();
         return userChoice;
 
     }
