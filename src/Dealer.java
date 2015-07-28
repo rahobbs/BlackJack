@@ -1,6 +1,6 @@
 public class Dealer extends Player{
     
-    public Choice makeChoice(int playerTotal) {
+    public Choice dealerChoice(int playerTotal) {
         
         String userInput = "";
         

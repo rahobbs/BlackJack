@@ -38,7 +38,7 @@ public class BlackJack {
             playerOne.applyChoice(playerOne.makeChoice());
             Score.isGameOver(playerOne.playerTotal, dealer.playerTotal, action,
                     dealerAction);
-            dealer.applyChoice(dealer.makeChoice());
+            dealer.applyChoice(dealer.dealerChoice(dealer.playerTotal));
             System.out.println("The dealer chose to " + dealer.userInput);
 
         }
