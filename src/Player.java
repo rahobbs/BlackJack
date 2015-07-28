@@ -3,26 +3,34 @@ import java.util.Scanner;
 
 public class Player {
     int playerTotal;
+
     public enum Choice {
-        HIT, STAY
+        HIT, STAY, NONE
     }
 
     public Choice makeChoice() {
         Scanner keyboard = new Scanner(System.in);
+        Choice userChoice;
 
-        while (true) {
-            System.out.print("Would you like to \"hit\" or \"stay?\": ");
-            String userInput = keyboard.next().trim().toUpperCase();
-            switch (userInput) {
-            case "HIT":
-                return Choice.HIT;
-            case "STAY":
-                return Choice.STAY;
-            default:
-                System.out.print("That option isn't available. ");
-                continue;
-            }
+        System.out.print("Would you like to \"hit\" or \"stay?\": ");
+        String userInput = keyboard.next().trim().toUpperCase();
+        // TODO (rachael) Remove this print statement once gameplay bug resolved
+        System.out.println("\"" + userInput + "\"");
+        switch (userInput) {
+        case "HIT":
+            userChoice = Choice.HIT;
+            break;
+        case "STAY":
+            userChoice = Choice.STAY;
+            break;
+        default:
+            System.out.print("That option isn't available. ");
+            userChoice = Choice.NONE;
+            break;
         }
+        keyboard.close();
+        return userChoice;
+
     }
 
     public int applyChoice(Choice userChoice) {
@@ -33,13 +41,14 @@ public class Player {
         case HIT:
             mCard = rand.nextInt(11 - 2 + 1) + 2;
             playerTotal = playerTotal + mCard;
-            System.out.println("You get a " + mCard + ". Your new total is " + playerTotal + ". ");
+            System.out.println("You get a " + mCard + ". Your new total is "
+                    + playerTotal + ". ");
             return playerTotal;
         case STAY:
-            mCard = 0;
             return playerTotal;
+
         default:
-            mCard = 0;
+            System.out.println("Something went wrong.");
             return playerTotal;
         }
     }
