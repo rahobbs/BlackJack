@@ -15,8 +15,6 @@ public class Player {
 
         System.out.print("Would you like to \"hit\" or \"stay?\": ");
         userInput = keyboard.next().trim().toUpperCase();
-        // TODO (rachael) Remove this print statement once gameplay bug resolved
-        System.out.println("\"" + userInput + "\"");
         switch (userInput) {
         case "HIT":
             userChoice = Choice.HIT;
@@ -41,8 +39,7 @@ public class Player {
         case HIT:
             mCard = rand.nextInt(11 - 2 + 1) + 2;
             playerTotal = playerTotal + mCard;
-            System.out.println("You get a " + mCard + ". Your new total is "
-                    + playerTotal + ". ");
+            System.out.print("The new card is " + mCard + ". ");
             return playerTotal;
         case STAY:
             return playerTotal;
