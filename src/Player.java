@@ -24,7 +24,7 @@ public class Player {
             break;
         default:
             System.out.print("That option isn't available. ");
-            userChoice = Choice.NONE;
+            userChoice = makeChoice();
             break;
         }
         return userChoice;
