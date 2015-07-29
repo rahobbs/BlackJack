@@ -35,19 +35,23 @@ public class BlackJack {
         while (Score.isGameOver(playerOne.playerTotal, dealer.playerTotal,
                 playerOne.userInput, dealer.userInput) == false) {
 
+            // player one's turn
             playerOne.applyChoice(playerOne.makeChoice());
-            System.out.println("Your total is " + playerOne.playerTotal
-                    + ".");
+            System.out.println("Your total is " + playerOne.playerTotal + ".");
+            // check to see if player one's action ended the game
             Score.isGameOver(playerOne.playerTotal, dealer.playerTotal, action,
                     dealerAction);
-            dealer.applyChoice(dealer.dealerChoice(dealer.playerTotal));
+            // dealer's turn
+            dealer.dealerChoice(dealer.playerTotal);
             System.out.println("The dealer chose to "
-                    + dealer.userInput.toLowerCase() + ".");
+                    + dealer.userInput.toLowerCase() + ". ");
+            dealer.applyChoice(dealer.dealerChoice(dealer.playerTotal));
 
         }
 
         // declare winner when game is over
-        System.out.println(Score.pickWinner(playerOne.playerTotal, dealer.playerTotal));
+        System.out.println(Score.pickWinner(playerOne.playerTotal,
+                dealer.playerTotal));
         keyboard.close();
 
     }

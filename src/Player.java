@@ -13,7 +13,7 @@ public class Player {
         Scanner keyboard = new Scanner(System.in);
         Choice userChoice;
 
-        System.out.print("Would you like to \"hit\" or \"stay?\": ");
+        System.out.println("Would you like to \"hit\" or \"stay?\": ");
         userInput = keyboard.next().trim().toUpperCase();
         switch (userInput) {
         case "HIT":
@@ -46,7 +46,7 @@ public class Player {
 
         default:
             System.out.println("Something went wrong.");
-            return playerTotal;
+            return 0;
         }
     }
 }

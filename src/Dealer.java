@@ -1,10 +1,8 @@
 public class Dealer extends Player {
-    
+
     String userInput = "";
 
     public Choice dealerChoice(int playerTotal) {
-
-
 
         if (this.playerTotal > 16) {
             userInput = "STAY";
