@@ -8,9 +8,10 @@ public class DealerTest {
     @Test
     public void testDealerLogic() {
         Player dealer = new Dealer();
-        dealer.playerTotal = 300;
-
-        Player.Choice choice1 = dealer.makeChoice();
-        assertEquals(Player.Choice.STAY, choice1);
+        for(int i = 1; i < 17; i++){
+            dealer.playerTotal = i;
+            Player.Choice choice1 = dealer.makeChoice();
+            assertEquals(Player.Choice.HIT, choice1);
+        }
     }
 }
