@@ -1,14 +1,11 @@
-import java.util.Scanner;
+
 import java.util.Random;
 
 public class BlackJack {
 
     public static void main(String[] args) {
 
-        Scanner keyboard = new Scanner(System.in);
         Random rand = new Random();
-        String action = "";
-        String dealerAction = "";
 
         System.out.println("Welcome to Blackjack!");
         System.out.println("");
@@ -16,7 +13,7 @@ public class BlackJack {
         // initial draw, create playerOne, dealer, initial cards and total
 
         Player playerOne = new Player();
-        Dealer dealer = new Dealer();
+        Player dealer = new Dealer();
         int playerCardOne = rand.nextInt(11 - 2 + 1) + 2;
         int playerCardTwo = rand.nextInt(11 - 2 + 1) + 2;
         playerOne.playerTotal = playerCardOne + playerCardTwo;
@@ -31,29 +28,30 @@ public class BlackJack {
         System.out.println("The dealer got a " + dealerCardOne
                 + ". His second card and total are hidden.");
 
+        Player.Choice playerOneChoice;
+        Player.Choice dealerChoice;
         // gameplay
-        while (Score.isGameOver(playerOne.playerTotal, dealer.playerTotal,
-                playerOne.userInput, dealer.userInput) == false) {
+        do {
+            playerOneChoice = playerOne.makeChoice();
+            dealerChoice = dealer.makeChoice();
 
             // player one's turn
-            playerOne.applyChoice(playerOne.makeChoice());
+            playerOne.applyChoice(playerOneChoice);
             System.out.println("Your total is " + playerOne.playerTotal + ".");
             // check to see if player one's action ended the game
-            Score.isGameOver(playerOne.playerTotal, dealer.playerTotal, action,
-                    dealerAction);
+            Score.isGameOver(playerOne.playerTotal, dealer.playerTotal, playerOneChoice,
+                    dealerChoice);
             // dealer's turn
-            dealer.dealerChoice(dealer.playerTotal);
             System.out.println("The dealer chose to "
-                    + dealer.userInput.toLowerCase() + ". ");
-            dealer.applyChoice(dealer.dealerChoice(dealer.playerTotal));
+                    + dealerChoice.name() + ". ");
+            dealer.applyChoice(dealerChoice);
 
-        }
+        } while (Score.isGameOver(playerOne.playerTotal, dealer.playerTotal,
+                playerOneChoice, dealerChoice) == false);
 
         // declare winner when game is over
         System.out.println(Score.pickWinner(playerOne.playerTotal,
                 dealer.playerTotal));
-        keyboard.close();
-
     }
 
 }

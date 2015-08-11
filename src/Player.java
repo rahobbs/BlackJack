@@ -1,34 +1,36 @@
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class Player {
     int playerTotal;
-    String userInput = "";
+    private String userInput = "";
 
     public enum Choice {
-        HIT, STAY, NONE
+        HIT, STAY
     }
 
     public Choice makeChoice() {
         Scanner keyboard = new Scanner(System.in);
-        Choice userChoice;
+        Choice userChoice = null;
 
-        System.out.println("Would you like to \"hit\" or \"stay?\": ");
-        userInput = keyboard.next().trim().toUpperCase();
-        switch (userInput) {
-        case "HIT":
-            userChoice = Choice.HIT;
-            break;
-        case "STAY":
-            userChoice = Choice.STAY;
-            break;
-        default:
-            System.out.print("That option isn't available. ");
-            userChoice = makeChoice();
-            break;
-        }
+        do {
+            System.out.println("Would you like to \"hit\" or \"stay?\": ");
+            userInput = keyboard.next().trim().toUpperCase();
+
+            switch (userInput) {
+            case "HIT":
+                userChoice = Choice.HIT;
+                break;
+            case "STAY":
+                userChoice = Choice.STAY;
+                break;
+            default:
+                System.out.print("That option isn't available. ");
+                break;
+            }
+        } while (userChoice == null);
         return userChoice;
-
     }
 
     public int applyChoice(Choice userChoice) {
