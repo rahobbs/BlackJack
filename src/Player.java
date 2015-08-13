@@ -37,13 +37,15 @@ public class Player {
         switch (userChoice){
         case HIT:
             return true;
+        case STAY:
+            return false;
         default:
             return false;
             }
     }
     
     public int drawCard(boolean isHit){
-        if (isHit = true){
+        if (isHit == true){
             Random rand = new Random();
             int mCard = rand.nextInt(11 - 2 + 1) + 2;
             return mCard;
