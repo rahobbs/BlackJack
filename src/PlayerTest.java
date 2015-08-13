@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.Random;
+
 import org.junit.Test;
 
 public class PlayerTest {
@@ -11,7 +13,12 @@ public class PlayerTest {
 
     @Test
     public void testApplyChoice() {
-        fail("Not yet implemented");
+        Random rand = new Random();
+        int playerTotal = 0;
+        int mCard = rand.nextInt(11 - 2 + 1) + 2;
+        
+        
+        
     }
 
 }

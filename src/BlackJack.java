@@ -36,7 +36,7 @@ public class BlackJack {
             dealerChoice = dealer.makeChoice();
 
             // player one's turn
-            playerOne.applyChoice(playerOneChoice);
+            playerOne.newTotal(playerOne.drawCard(playerOne.isHit(playerOne.makeChoice())));
             System.out.println("Your total is " + playerOne.playerTotal + ".");
             // check to see if player one's action ended the game
             Score.isGameOver(playerOne.playerTotal, dealer.playerTotal, playerOneChoice,
@@ -44,7 +44,7 @@ public class BlackJack {
             // dealer's turn
             System.out.println("The dealer chose to "
                     + dealerChoice.name() + ". ");
-            dealer.applyChoice(dealerChoice);
+            dealer.newTotal(dealer.drawCard(dealer.isHit(dealerChoice)));
 
         } while (Score.isGameOver(playerOne.playerTotal, dealer.playerTotal,
                 playerOneChoice, dealerChoice) == false);

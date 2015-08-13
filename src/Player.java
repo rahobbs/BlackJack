@@ -32,23 +32,33 @@ public class Player {
         } while (userChoice == null);
         return userChoice;
     }
-
-    public int applyChoice(Choice userChoice) {
-
-        int mCard;
-        Random rand = new Random();
-        switch (userChoice) {
+    
+    public boolean isHit(Choice userChoice){
+        switch (userChoice){
         case HIT:
-            mCard = rand.nextInt(11 - 2 + 1) + 2;
-            playerTotal = playerTotal + mCard;
-            System.out.print("The new card is " + mCard + ". ");
-            return playerTotal;
-        case STAY:
-            return playerTotal;
-
+            return true;
         default:
-            System.out.println("Something went wrong.");
+            return false;
+            }
+    }
+    
+    public int drawCard(boolean isHit){
+        if (isHit = true){
+            Random rand = new Random();
+            int mCard = rand.nextInt(11 - 2 + 1) + 2;
+            return mCard;
+        } else{
             return 0;
         }
     }
+    
+    public int newTotal(int newCard){
+        if(newCard != 0){
+            playerTotal = playerTotal + newCard;
+            return playerTotal;
+        } else {
+            return playerTotal;
+        }
+    }
+
 }
