@@ -20,12 +20,23 @@ public class PlayerTest {
     
     @Test
     public void testDrawCard(){
-        fail("Not yet implemented");
+        Player player = new Player();
+        int card = player.drawCard(true);
+        int noCard = player.drawCard(false);
+        
+        assertEquals(noCard, 0);
     }
     
     @Test
     public void testNewTotal(){
-        fail("Not yet implemented");
+        Player player = new Player();
+        
+        for (int playerTotal = 0; playerTotal < 22; playerTotal++){
+            int newCard = 3;
+            int newValue = player.newTotal(3);
+            assertEquals(newValue, playerTotal + newCard);
+            }
+        }
+        
     }
 
-}

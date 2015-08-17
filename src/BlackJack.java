@@ -6,14 +6,16 @@ public class BlackJack {
     public static void main(String[] args) {
 
         Random rand = new Random();
-
+        Player playerOne = new Player();
+        Player dealer = new Dealer();
+        Player.Choice playerOneChoice;
+        Player.Choice dealerChoice;
         System.out.println("Welcome to Blackjack!");
         System.out.println("");
 
         // initial draw, create playerOne, dealer, initial cards and total
 
-        Player playerOne = new Player();
-        Player dealer = new Dealer();
+
         int playerCardOne = rand.nextInt(11 - 2 + 1) + 2;
         int playerCardTwo = rand.nextInt(11 - 2 + 1) + 2;
         playerOne.playerTotal = playerCardOne + playerCardTwo;
@@ -28,8 +30,6 @@ public class BlackJack {
         System.out.println("The dealer got a " + dealerCardOne
                 + ". His second card and total are hidden.");
 
-        Player.Choice playerOneChoice;
-        Player.Choice dealerChoice;
         // gameplay
         do {
             playerOneChoice = playerOne.makeChoice();
@@ -51,8 +51,8 @@ public class BlackJack {
                 playerOneChoice, dealerChoice) == false);
 
         // declare winner when game is over
-        System.out.println(Score.pickWinner(playerOne.playerTotal,
-                dealer.playerTotal));
+        System.out.println(Score.reportWinner(Score.pickWinner(playerOne.playerTotal,
+                dealer.playerTotal), playerOne.playerTotal, dealer.playerTotal));
     }
 
 }

@@ -17,15 +17,24 @@ public class Score {
 
     public static String pickWinner(int playerOneTotal, int dealerTotal) {
         if (playerOneTotal > 21 && dealerTotal <= 21) {
-            winner = "The dealer wins, with a total of " + dealerTotal + ".";
+            winner = "dealer";
         } else if (playerOneTotal <= 21 && dealerTotal > 21) {
-            winner = "You win, with a total of " + playerOneTotal
-                    + " vs the dealer's " + dealerTotal;
+            winner = "player";
         } else if (playerOneTotal > dealerTotal) {
+            winner = "player";
+        } else {
+            winner = "dealer";
+        }
+        return winner;
+    }
+    
+    public static String reportWinner(String winner, int playerOneTotal, int dealerTotal){
+        if (winner.equals("dealer")){
+            winner = "The dealer wins, with a total of " + dealerTotal + ".";
+        } else {
             winner = "You win, with a total of " + playerOneTotal
                     + " vs the dealer's " + dealerTotal;
-        } else {
-            winner = "The dealer wins, with a total of " + dealerTotal + ".";
+            
         }
         return winner;
     }
