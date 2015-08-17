@@ -1,4 +1,3 @@
-
 public class Dealer extends Player {
     public Choice makeChoice() {
         if (this.playerTotal > 16) {

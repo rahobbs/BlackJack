@@ -1,4 +1,3 @@
-
 import java.util.Random;
 
 public class BlackJack {
@@ -14,7 +13,6 @@ public class BlackJack {
         System.out.println("");
 
         // initial draw, create playerOne, dealer, initial cards and total
-
 
         int playerCardOne = rand.nextInt(11 - 2 + 1) + 2;
         int playerCardTwo = rand.nextInt(11 - 2 + 1) + 2;
@@ -36,23 +34,25 @@ public class BlackJack {
             dealerChoice = dealer.makeChoice();
 
             // player one's turn
-            
-            playerOne.newTotal(playerOne.drawCard(playerOne.isHit(playerOneChoice)));
+
+            playerOne.newTotal(playerOne.drawCard(playerOne
+                    .isHit(playerOneChoice)));
             System.out.println("Your total is " + playerOne.playerTotal + ".");
             // check to see if player one's action ended the game
-            Score.isGameOver(playerOne.playerTotal, dealer.playerTotal, playerOneChoice,
-                    dealerChoice);
+            Score.isGameOver(playerOne.playerTotal, dealer.playerTotal,
+                    playerOneChoice, dealerChoice);
             // dealer's turn
-            System.out.println("The dealer chose to "
-                    + dealerChoice.name() + ". ");
+            System.out.println("The dealer chose to " + dealerChoice.name()
+                    + ". ");
             dealer.newTotal(dealer.drawCard(dealer.isHit(dealerChoice)));
 
         } while (Score.isGameOver(playerOne.playerTotal, dealer.playerTotal,
                 playerOneChoice, dealerChoice) == false);
 
         // declare winner when game is over
-        System.out.println(Score.reportWinner(Score.pickWinner(playerOne.playerTotal,
-                dealer.playerTotal), playerOne.playerTotal, dealer.playerTotal));
+        System.out.print(Score.reportWinner(
+                Score.pickWinner(playerOne.playerTotal, dealer.playerTotal)));
+        Score.finalScore(playerOne.playerTotal, dealer.playerTotal);
     }
 
 }

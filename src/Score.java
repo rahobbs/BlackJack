@@ -1,4 +1,3 @@
-
 public class Score {
 
     static String winner = "";
@@ -7,7 +6,8 @@ public class Score {
             Player.Choice playerOneChoice, Player.Choice dealerChoice) {
         if (playerOneTotal >= 21 || dealerTotal >= 21) {
             return true;
-        } else if (playerOneChoice == Player.Choice.STAY && dealerChoice == Player.Choice.STAY) {
+        } else if (playerOneChoice == Player.Choice.STAY
+                && dealerChoice == Player.Choice.STAY) {
             return true;
         } else {
             return false;
@@ -27,16 +27,22 @@ public class Score {
         }
         return winner;
     }
-    
-    public static String reportWinner(String winner, int playerOneTotal, int dealerTotal){
-        if (winner.equals("dealer")){
-            winner = "The dealer wins, with a total of " + dealerTotal + ".";
+
+    public static String reportWinner(String winner) {
+        if (winner.equals("dealer")) {
+            winner = "The dealer wins! ";
         } else {
-            winner = "You win, with a total of " + playerOneTotal
-                    + " vs the dealer's " + dealerTotal;
-            
+            winner = "You win! ";
+
         }
         return winner;
+    }
+
+    public static void finalScore(int playerOneTotal, int dealerTotal) {
+        System.out.println("Final Score");
+        System.out.println("Player One: " + playerOneTotal);
+        System.out.println("Dealer: " + dealerTotal);
+
     }
 
 }
