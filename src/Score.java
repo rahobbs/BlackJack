@@ -6,8 +6,8 @@ public class Score {
             Player.Choice playerOneChoice, Player.Choice dealerChoice) {
         if (playerOneTotal >= 21 || dealerTotal >= 21) {
             return true;
-        } else if (playerOneChoice == Player.Choice.STAY
-                && dealerChoice == Player.Choice.STAY) {
+        } else if (playerOneTotal <= 21 && playerOneChoice == Player.Choice.STAY
+                && dealerTotal <= 21 && dealerChoice == Player.Choice.STAY) {
             return true;
         } else {
             return false;
@@ -16,13 +16,9 @@ public class Score {
     }
 
     public static String pickWinner(int playerOneTotal, int dealerTotal) {
-        if (playerOneTotal > 21 && dealerTotal <= 21) {
-            winner = "dealer";
-        } else if (playerOneTotal <= 21 && dealerTotal > 21) {
+        if (playerOneTotal <= 21 && dealerTotal < playerOneTotal) {
             winner = "player";
-        } else if (playerOneTotal > dealerTotal) {
-            winner = "player";
-        } else {
+        }  else {
             winner = "dealer";
         }
         return winner;

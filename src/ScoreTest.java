@@ -1,6 +1,5 @@
-import static org.junit.Assert.*;
-
-import java.util.Random;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -15,22 +14,26 @@ public class ScoreTest {
                     Player.Choice.HIT, Player.Choice.HIT);
             assertEquals(isGameOver, false);
         }
+        
+        int under = 22;
+        int over = 5; 
+        Player.Choice hit = Player.Choice.HIT;
+        Player.Choice stay = Player.Choice.STAY;
+        assertEquals(Score.isGameOver(over, under, hit, hit), true);
+        assertEquals(Score.isGameOver(under, over, hit, hit), true);
+        assertEquals(Score.isGameOver(under, under, stay, stay), true);
 
     }
 
     @Test
     public void testPickWinner() {
-        Random rand = new Random();
-        int playerTotal = rand.nextInt(22);
-        int dealerTotal = rand.nextInt(22);
+        int playerTotal = 17;
+        int dealerTotal = 15;
+        assertEquals(Score.pickWinner(playerTotal, dealerTotal), "player");
 
-        if (playerTotal > dealerTotal && playerTotal < 22) {
-            String player = Score.pickWinner(playerTotal, dealerTotal);
-            assertEquals(player, "player");
-        } else {
-            String dealer = Score.pickWinner(playerTotal, dealerTotal);
-            assertEquals(dealer, "dealer");
-        }
+        playerTotal = 14;
+        dealerTotal = 16;
+        assertEquals(Score.pickWinner(playerTotal, dealerTotal), "dealer");
 
     }
 
