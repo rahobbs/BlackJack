@@ -50,8 +50,8 @@ public class BlackJack {
                 playerOneChoice, dealerChoice) == false);
 
         // declare winner when game is over
-        System.out.print(Score.reportWinner(
-                Score.pickWinner(playerOne.playerTotal, dealer.playerTotal)));
+        System.out.print(Score.reportWinner(Score.pickWinner(
+                playerOne.playerTotal, dealer.playerTotal)));
         Score.finalScore(playerOne.playerTotal, dealer.playerTotal);
     }
 

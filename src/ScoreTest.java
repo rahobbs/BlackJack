@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.Random;
+
 import org.junit.Test;
 
 public class ScoreTest {
@@ -18,29 +20,32 @@ public class ScoreTest {
 
     @Test
     public void testPickWinner() {
+        Random rand = new Random();
+        int playerTotal = rand.nextInt(22);
+        int dealerTotal = rand.nextInt(22);
 
-        int playerTotal;
-        int dealerTotal;
-
-        while (playerTotal > dealerTotal && playerTotal < 22) {
+        if (playerTotal > dealerTotal && playerTotal < 22) {
             String player = Score.pickWinner(playerTotal, dealerTotal);
-
+            assertEquals(player, "player");
+        } else {
+            String dealer = Score.pickWinner(playerTotal, dealerTotal);
+            assertEquals(dealer, "dealer");
         }
 
     }
 
     @Test
     public void testReportWinner() {
-        
+
         String dealerWins = Score.reportWinner("dealer");
         String playerWins = Score.reportWinner("player");
-        
+
         assertEquals(dealerWins, "The dealer wins! ");
         assertEquals(playerWins, "You win! ");
     }
-    
+
     @Test
-    public void finalScore(){
+    public void finalScore() {
         fail("Not yet implemented");
     }
 

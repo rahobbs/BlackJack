@@ -1,4 +1,3 @@
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -32,30 +31,30 @@ public class Player {
         } while (userChoice == null);
         return userChoice;
     }
-    
-    public boolean isHit(Choice userChoice){
-        switch (userChoice){
+
+    public boolean isHit(Choice userChoice) {
+        switch (userChoice) {
         case HIT:
             return true;
         case STAY:
             return false;
         default:
             return false;
-            }
+        }
     }
-    
-    public int drawCard(boolean isHit){
-        if (isHit == true){
+
+    public int drawCard(boolean isHit) {
+        if (isHit == true) {
             Random rand = new Random();
             int mCard = rand.nextInt(11 - 2 + 1) + 2;
             return mCard;
-        } else{
+        } else {
             return 0;
         }
     }
-    
-    public int newTotal(int newCard){
-        if(newCard != 0){
+
+    public int newTotal(int newCard) {
+        if (newCard != 0) {
             playerTotal = playerTotal + newCard;
             return playerTotal;
         } else {

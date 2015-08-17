@@ -22,7 +22,7 @@ public class PlayerTest {
     public void testDrawCard() {
         Player player = new Player();
         Random rand = new Random();
-        int total = 3;
+        int total = rand.nextInt(22);
         player.playerTotal = total;
         int card = player.drawCard(true);
         int noCard = player.drawCard(false);
