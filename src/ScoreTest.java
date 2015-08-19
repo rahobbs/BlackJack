@@ -1,5 +1,4 @@
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -22,7 +21,10 @@ public class ScoreTest {
         Player.Choice stay = Player.Choice.STAY;
         assertEquals(Score.isGameOver(over, under, hit, hit), true);
         assertEquals(Score.isGameOver(under, over, hit, hit), true);
-        assertEquals(Score.isGameOver(under, under, stay, stay), true);
+        assertEquals(Score.isGameOver(under, under, stay, stay), true); 
+        assertEquals(Score.isGameOver(over, over, stay, stay), true);
+        assertEquals(Score.isGameOver(over, under, stay, stay), true);
+        assertEquals(Score.isGameOver(under, over, stay, stay), true);
 
     }
 
