@@ -54,12 +54,8 @@ public class Player {
     }
 
     public int newTotal(int newCard) {
-        if (newCard != 0) {
-            playerTotal = playerTotal + newCard;
-            return playerTotal;
-        } else {
-            return playerTotal;
-        }
+        playerTotal = playerTotal + newCard;
+        return playerTotal;
     }
 
 }

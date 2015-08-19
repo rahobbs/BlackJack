@@ -8,10 +8,9 @@ public class Game {
     static Player.Choice playerOneChoice;
     static Player.Choice dealerChoice;
 
-    public static void newGame() {
+    public static String newGame() {
 
-        System.out.println("Welcome to Blackjack!");
-        System.out.println("");
+        return "Welcome to Blackjack! \n";
     }
 
     public static void initialDraw() {

@@ -6,8 +6,9 @@ public class Score {
             Player.Choice playerOneChoice, Player.Choice dealerChoice) {
         if (playerOneTotal >= 21 || dealerTotal >= 21) {
             return true;
-        } else if (playerOneTotal <= 21 && playerOneChoice == Player.Choice.STAY
-                && dealerTotal <= 21 && dealerChoice == Player.Choice.STAY) {
+        } else if (playerOneTotal <= 21
+                && playerOneChoice == Player.Choice.STAY && dealerTotal <= 21
+                && dealerChoice == Player.Choice.STAY) {
             return true;
         } else {
             return false;
@@ -16,9 +17,9 @@ public class Score {
     }
 
     public static String pickWinner(int playerOneTotal, int dealerTotal) {
-        if (playerOneTotal <= 21 && dealerTotal < playerOneTotal) {
+        if (playerOneTotal <= 21 && dealerTotal < playerOneTotal || playerOneTotal < dealerTotal && dealerTotal > 21) {
             winner = "player";
-        }  else {
+        } else {
             winner = "dealer";
         }
         return winner;
@@ -34,10 +35,10 @@ public class Score {
         return winner;
     }
 
-    public static void finalScore(int playerOneTotal, int dealerTotal) {
-        System.out.println("Final Score");
-        System.out.println("Player One: " + playerOneTotal);
-        System.out.println("Dealer: " + dealerTotal);
+    public static String finalScore(int playerOneTotal, int dealerTotal) {
+        String finalScore = ("Final Score" + "\n" + "Player One: "
+                + playerOneTotal + "\n" + "Dealer: " + dealerTotal);
+        return finalScore;
 
     }
 

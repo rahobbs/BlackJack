@@ -15,6 +15,7 @@ public class ScoreTest {
             assertEquals(isGameOver, false);
         }
         
+        
         int under = 22;
         int over = 5; 
         Player.Choice hit = Player.Choice.HIT;
@@ -27,13 +28,19 @@ public class ScoreTest {
 
     @Test
     public void testPickWinner() {
-        int playerTotal = 17;
-        int dealerTotal = 15;
-        assertEquals(Score.pickWinner(playerTotal, dealerTotal), "player");
+        int higher = 17;
+        int lower = 15;
+        assertEquals(Score.pickWinner(higher, lower), "player");
 
-        playerTotal = 14;
-        dealerTotal = 16;
-        assertEquals(Score.pickWinner(playerTotal, dealerTotal), "dealer");
+        lower = 14;
+        higher = 16;
+        assertEquals(Score.pickWinner(lower, higher), "dealer");
+        
+        int over = 22;
+        int under = 14;
+        
+        assertEquals(Score.pickWinner(over, under), "dealer");
+        assertEquals(Score.pickWinner(under, over), "player");
 
     }
 
@@ -49,7 +56,16 @@ public class ScoreTest {
 
     @Test
     public void finalScore() {
-        fail("Not yet implemented");
+        int winner = 21;
+        int loser = 15;
+        
+        String playerWins = Score.finalScore(winner, loser);
+        String dealerWins = Score.finalScore(loser, winner);
+        
+        assertEquals(playerWins, "Final Score" + "\n" + "Player One: "
+                + winner + "\n" + "Dealer: " + loser);
+        assertEquals(dealerWins, "Final Score" + "\n" + "Player One: "
+                + loser + "\n" + "Dealer: " + winner);
     }
 
 }

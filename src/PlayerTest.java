@@ -36,10 +36,11 @@ public class PlayerTest {
         Player player = new Player();
 
         for (int playerTotal = 0; playerTotal < 22; playerTotal++) {
-            player.playerTotal = playerTotal;
-            int newCard = 3;
-            int newValue = player.newTotal(3);
+            for(int newCard= 0; newCard < 12; newCard++){
+            player.playerTotal = playerTotal;         
+            int newValue = player.newTotal(newCard);
             assertEquals(newValue, playerTotal + newCard);
+            }
         }
     }
 
